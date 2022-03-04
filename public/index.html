@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>RE-MIDDLE TESTER</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
   <script>
 
     function randomString() {
@@ -41,6 +44,10 @@
       }; 
       d = new Date();
       document.getElementById("paymentDate").value = d.yyyymmdd();
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     } 
     
   </script>
@@ -69,6 +76,12 @@
               </select>
             </div>
           </div>
+          <div class="form-group row">
+            <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">SECRET KEY</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="secretKey" name="SECRET_KEY" value="tes01011010" required>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row m-2">
@@ -77,7 +90,7 @@
       <div class="row m-2">
         <div class="col-md-6">
             <div class="form-group row">
-              <label for="PARTNER_ID" class="col-sm-3 col-form-label col-form-label-sm">Partner ID</label>
+              <label for="PARTNER_ID" class="col-sm-4 col-form-label col-form-label-sm">Partner ID</label>
               <div class="col-sm-6">
                 <select name="PARTNER_ID" id="partnerId" class="form-control form-control-sm">
                   <option value="1" >MPG</option>
@@ -91,10 +104,33 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="ACTIVITY_ID" class="col-sm-3 col-form-label col-form-label-sm">Activity ID</label>
+              <label for="ACTIVITY_ID" class="col-sm-4 col-form-label col-form-label-sm">Activity ID</label>
               <div class="col-sm-6">
                 <select name="ACTIVITY_ID" id="activityId" class="form-control form-control-sm">
-                  <option value="5001" >LOGIN AUTH USER AND PASSWORD</option>
+                  <optgroup label="PAYMENT">
+                    <option value="1" >PRE PAYMENT</option>
+                    <option value="2" >POST PAYMENT</option>
+                    <option value="3" >PRE REVERSAL</option>
+                    <option value="4">POST REVERSAL</option>
+                    <option value="5">PRE VOID</option>
+                    <option value="6">POST VOID</option>
+                    <option value="21">INQUIRY</option>
+                    <option value="22">PRE 3DS</option>
+                    <option value="7" >PRE FULL REFUND</option>
+                    <option value="8">POST FULL REFUND</option>
+                    <option value="9" >PRE PARTIAL REFUND CC</option>
+                    <option value="10">POST PARTIAL REFUND CC</option>
+                    <option value="11" >PRE PARTIAL REFUND Debit</option>
+                    <option value="12">POST PARTIAL REFUND Debit</option>
+                    <option value="13" >PRE AUTHORIZE</option>
+                    <option value="14">POST AUTHORIZE</option>
+                    <option value="15" >PRE CAPTURE</option>
+                    <option value="16">POST CAPTURE</option>
+                    <option value="17" >PRE SETTLEMENT</option>
+                    <option value="18">POST SETTLEMENT</option>
+                  </optgroup>
+                  <optgroup label="MANAGEMENT">
+                    <option value="5001" >LOGIN AUTH USER AND PASSWORD</option>
                     <option value="5002">LOGIN AUTH OTP</option>
                     <option value="5003" >LOGIN AUTH SECRET QUESTION</option>
                     <option value="5004" >EDIT ACCOUNT MOBILE PHONE</option>
@@ -149,35 +185,60 @@
                     <option value="5059" >CREATE TOKEN</option>
                     <option value="5060" >INQUIRY MANAGEMENT</option>
                     <option value="5061" >REVERSAL MANAGEMENT</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
             <div class="form-group row">
-              <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">Transaction ID</label>
+              <label for="PAYMENT_CHANNEL_ID" class="col-sm-4 col-form-label col-form-label-sm">Payment Channel</label>
+              <div class="col-sm-6">
+                <select name="PAYMENT_CHANNEL_ID" id="paymentChannel" class="form-control form-control-sm" data-toggle="tooltip" data-placement="right" title="Keep empty for activity management">
+                  <option value="" selected>Choose...</option>
+                  <option value="1" >CREDIT CARD</option>
+                  <option value="3" >Doku Wallet</option>
+                  <option value="4" >ADS</option> 
+                  <option value="5" >VA</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="MERCHANT_ID" class="col-sm-4 col-form-label col-form-label-sm">Merchant</label>
+              <div class="col-sm-6">
+                <select name="MERCHANT_ID" id="merchantId" class="form-control form-control-sm" data-toggle="tooltip" data-placement="right" title="Keep empty for activity management">
+                  <option value="" selected>Choose...</option>
+                  <option value="1">Air Niugini</option>
+                  <option value="8" >Air Asia</option>
+                  <option value="21200">GARUDA ON LINE</option>
+                  <option value="21484">KFC JAKARTA</option>
+                  <option value="21181" >HaloDoc</option>
+                  <option value="21335">Electronic City</option>
+                  <option value="22019">Doku Scholarship</option>
+                  <option value="99999">Default Merchant</option>
+                  <option value="22384" >Doku Merchant</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="TRANSACTION_ID" class="col-sm-4 col-form-label col-form-label-sm">Transaction ID</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="transactionId" name="TRANSACTION_ID" required>
               </div>
             </div>
+            
             <div class="form-group row">
-              <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">Secret Key</label>
-              <div class="col-sm-6">
-                <input type ="text" class="form-control form-control-sm" id="secretKey" name="SECRET_KEY" value="tes01011010" required>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="AMOUNT" class="col-sm-3 col-form-label col-form-label-sm">Amount</label>
+              <label for="AMOUNT" class="col-sm-4 col-form-label col-form-label-sm">Amount</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="amount" name="AMOUNT">
               </div>
             </div>
             <div class="form-group row">
-              <label for="AMOUNT" class="col-sm-3 col-form-label col-form-label-sm">Payment Date</label>
+              <label for="AMOUNT" class="col-sm-4 col-form-label col-form-label-sm">Payment Date</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="paymentDate" name="PAYMENT_DATE">
               </div>
             </div>
             <div class="form-group row">
-              <label for="STATUS" class="col-sm-3 col-form-label col-form-label-sm">Status</label>
+              <label for="STATUS" class="col-sm-4 col-form-label col-form-label-sm">Status</label>
               <div class="col-sm-6">
                 <select name="STATUS" id="status" class="form-control form-control-sm">
                   <option value="S" selected>SUCCESS</option>
@@ -185,14 +246,6 @@
                 </select>
               </div>
             </div>
-
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          
-          
         </div>
 
         <div class="col-md-6">
@@ -227,7 +280,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="CUSTOMER_IDENTITY_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">Customer ID Image Link</label>
+            <label for="CUSTOMER_IDENTITY_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">Cust. Identity Image Link</label>
             <div class="col-sm-6">
               <input type ="text" class="form-control form-control-sm" id="customerIdentityImageLink" name="CUSTOMER_IDENTITY_IMAGE_LINK">
             </div>
@@ -237,6 +290,58 @@
             <div class="col-sm-6">
               <input type ="text" class="form-control form-control-sm" id="customerPhotoLink" name="CUSTOMER_PHOTO_LINK">
             </div>
+          </div>
+          <div class="form-group row">
+            <label for="FACEMATCH_STATUS" class="col-sm-5 col-form-label col-form-label-sm">Facematch Status</label>
+            <div class="col-sm-6">
+              <select name="FACEMATCH_STATUS" id="facematchStatus" class="form-control form-control-sm">
+                <option value="" selected>Choose...</option>
+                <option value="true" >TRUE</option>
+                <option value="false" >FALSE</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="SELFIE_SPOOFING_STATUS" class="col-sm-5 col-form-label col-form-label-sm">Selfie Spoofing Status</label>
+            <div class="col-sm-6">
+              <select name="SELFIE_SPOOFING_STATUS" id="selfieSpoofingStatus" class="form-control form-control-sm">
+                <option value="" selected>Choose...</option>
+                <option value="true" >TRUE</option>
+                <option value="false" >FALSE</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="TAMPERED_IMAGE_STATUS" class="col-sm-5 col-form-label col-form-label-sm">Tampered Image Status</label>
+            <div class="col-sm-6">
+              <select name="TAMPERED_IMAGE_STATUS" id="tamperedImageStatus" class="form-control form-control-sm">
+                <option value="" selected>Choose...</option>
+                <option value="true" >TRUE</option>
+                <option value="false" >FALSE</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="BIOMETRIC_STATUS" class="col-sm-5 col-form-label col-form-label-sm">Biometric Status</label>
+            <div class="col-sm-6">
+              <select name="BIOMETRIC_STATUS" id="biometricStatus" class="form-control form-control-sm">
+                <option value="" selected>Choose...</option>
+                <option value="true" >TRUE</option>
+                <option value="false" >FALSE</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="IMAGE_BUCKET_NAME" class="col-sm-5 col-form-label col-form-label-sm">Image Bucket Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="imageBucketName" name="IMAGE_BUCKET_NAME">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>

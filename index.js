@@ -27,14 +27,22 @@ const STRING_PEMBATAS = "-------------------------------------------------------
 app.post('/', function(req,res){
   let myJson = new Object();
   let riskEnvironment = req.body.RE_ENV;
+  let secretKey = req.body.SECRET_KEY;
 
   for(propertyName in req.body) {
-    if(propertyName != 'RE_ENV' && req.body[propertyName] != ""){
-      myJson[propertyName] = req.body[propertyName];
+    if(propertyName != 'RE_ENV' && propertyName != 'SECRET_KEY' && req.body[propertyName] != ""){
+      
+      if(req.body[propertyName] == 'true'){
+        myJson[propertyName] = new Boolean(true);
+      } else if (req.body[propertyName] == 'false'){
+        myJson[propertyName] = new Boolean(false);
+      } else {
+        myJson[propertyName] = req.body[propertyName];
+      }
     }
   }
 
-  let { PARTNER_ID, SECRET_KEY, TRANSACTION_ID } = myJson;
+  let { PARTNER_ID, TRANSACTION_ID } = myJson;
 
   let requestTimestamp = new Date(Date.now());
 
@@ -51,7 +59,7 @@ app.post('/', function(req,res){
     requestTimestamp.toISOString(),
     "/RiskMiddle/screening", 
     digest,
-    SECRET_KEY);
+    secretKey);
 
   console.log("----- Header Signature -----")
   console.log(headerSignature)
