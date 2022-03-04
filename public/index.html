@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>RE-MIDDLE TESTER</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script>
+
+    function randomString() {
+      var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+      var string_length = 16;
+      var randomstring = '';
+      var randomstring2 = '';
+      for (var i=0; i<string_length; i++) {
+          var rnum = Math.floor(Math.random() * chars.length);
+          randomstring += chars.substring(rnum,rnum+1);
+          randomstring2 += chars.substring(rnum,rnum+2);
+      }
+      document.getElementById("transactionId").value=randomstring;
+
+      var numberChars = "0123456789";
+      var numberLength = 4;
+      var randomNumber = '';
+      for (var j=0; j<numberLength; j++) {
+          var rnum = Math.floor(Math.random() * numberChars.length);
+          randomNumber += numberChars.substring(rnum,rnum+1);
+      }
+      document.getElementById("amount").value='11' + randomNumber + '91.'+ randomNumber.substring(0,2);
+
+      var time = new Date().getTime();
+              Date.prototype.yyyymmdd = function() {
+              var yyyy = this.getFullYear().toString();
+              var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+              var dd = this.getDate().toString();
+              var hh = this.getHours().toString();
+              var min = this.getMinutes().toString();
+              var ss = this.getSeconds().toString();
+
+      return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]) + (hh[1]?hh:"0"+hh[0]) + (min[1]?min:"0"+min[0]) + (ss[1]?ss:"0"+ss[0]);
+      }; 
+      d = new Date();
+      document.getElementById("paymentDate").value = d.yyyymmdd();
+    } 
+    
+  </script>
+</head>
+<body onload="randomString()">
+
+  <div class="container">
+    <div class="row m-2">
+      <div class="col-md">
+        <div class="alert alert-primary" role="alert">
+          <b>REQUEST SCREENING</b>
+        </div>
+      </div>
+    </div>
+
+    <form action="/" method="POST">
+      <div class="row m-2">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label for="RE_ENV" class="col-sm-3 col-form-label col-form-label-sm">RE ENV.</label>
+            <div class="col-sm-6">
+              <select name="RE_ENV" id="reEnv" class="form-control form-control-sm">
+                <option value="http://localhost:7000/RiskMiddle/screening" >LOCAL</option>
+                <option value="http://api-sit.doku.com/RiskMiddle/screening" selected>SIT</option>
+                <option value="https://api-uat.doku.com/RiskMiddle/screening" >UAT</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-md"><hr></div>
+      </div>
+      <div class="row m-2">
+        <div class="col-md-6">
+            <div class="form-group row">
+              <label for="PARTNER_ID" class="col-sm-3 col-form-label col-form-label-sm">Partner ID</label>
+              <div class="col-sm-6">
+                <select name="PARTNER_ID" id="partnerId" class="form-control form-control-sm">
+                  <option value="1" >MPG</option>
+                  <option value="2" selected>DW</option>
+                  <option value="4" >ADS</option> 
+                  <option value="5" >MVA</option>      
+                  <option value="6" >DOKU MERCHANT</option>
+                  <option value="10" >REMITTANCE</option>
+                  <option value="24" >AA</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ACTIVITY_ID" class="col-sm-3 col-form-label col-form-label-sm">Activity ID</label>
+              <div class="col-sm-6">
+                <select name="ACTIVITY_ID" id="activityId" class="form-control form-control-sm">
+                  <option value="5001" >LOGIN AUTH USER AND PASSWORD</option>
+                    <option value="5002">LOGIN AUTH OTP</option>
+                    <option value="5003" >LOGIN AUTH SECRET QUESTION</option>
+                    <option value="5004" >EDIT ACCOUNT MOBILE PHONE</option>
+                    <option value="5005">EDIT ACCOUNT MOBILE PHONE OTP</option>
+                    <option value="5006">EDIT ACCOUNT MOBILE PHONE SECRET QUESTION</option>
+                    <option value="5007" >CHANGE CONTACT EMAIL</option>
+                    <option value="5008">CHANGE CONTACT PHONE</option>
+                    <option value="5009" >CHANGE PASSWORD</option>
+                    <option value="5010" >CHANGE PIN</option>
+                    <option value="5011" >TRANSFER</option>
+                    <option value="5012" >TOP UP</option>
+                    <option value="5013" >CASH OUT</option>
+                    <option value="5014">CHANGE PROFILE</option>
+                    <option value="5015">REGISTER CREDIT CARD</option>
+                    <option value="5016">REGISTER OTHER WALLET</option>
+                    <option value="5017">UPDATE CREDIT CARD</option>
+                    <option value="5018">UPDATE DEBIT CARD</option>
+                    <option value="5019">UPDATE OTHER WALLET</option>
+                    <option value="5020">DELETE CREDIT CARD</option>
+                    <option value="5021">DELETE DEBIT CARD</option>
+                    <option value="5022">DELETE OTHER WALLET</option>
+                    <option value="5023">REQUEST FORGOT PASSWORD</option>
+                    <option value="5024">REQUEST FORGOT PIN</option>
+                    <option value="5025" >KYC ACCOUNT</option>
+                    <option value="5026">ACTIVATE ACCOUNT</option>
+                    <option value="5027">UNREGISTER ACCOUNT</option>
+                    <option value="5028">LOGOUT AUTH</option>
+                    <option value="5029" >REGISTER</option>
+                    <option value="5030">ADD CARD / REGISTER DEBIT CARD</option>
+                    <option value="5031">VERIFY CUSTOMER</option>
+                    <option value="5032">LOGIN SUCCESS</option>
+                    <option value="5033">CHANGE CONTACT EMAIL SUCCESS</option>
+                    <option value="5034">CHANGE CONTACT PHONE SUCCESS</option>
+                    <option value="5035">CHANGE PASSWORD SUCCESS</option>
+                    <option value="5036">CHANGE PIN SUCCESS</option>
+                    <option value="5037">REQUEST FORGOT PASSWORD SUCCESS</option>
+                    <option value="5038">REQUEST FORGOT PIN SUCCESS</option>
+                    <option value="5039">POST TRANSFER</option>
+                    <option value="5040">POST TOP UP</option>
+                    <option value="5041">POST CASH OUT</option>
+                    <option value="5042" >PRE OFFLINE PAYMENT</option>
+                    <option value="5043">POST OFFLINE PAYMENT</option>
+                    <option value="5044" >TRANSFER BANK ACCOUNT</option>
+                    <option value="5045">TRANSFER BANK ACCOUNT SUCCES</option>
+                    <option value="5052" >PRE REGISTER</option>
+                    <option value="5046" >ASK FOR MONEY</option>
+                    <option value="5047" >POST ASK FOR MONEY</option>
+                    <option value="5055" selected>PRE KYB</option>
+                    <option value="5056" >POST KYB</option>
+                    <option value="5057">CONFIRM DEVICE</option>
+                    <option value="5058" >CREATE TRANSACTION</option>
+                    <option value="5059" >CREATE TOKEN</option>
+                    <option value="5060" >INQUIRY MANAGEMENT</option>
+                    <option value="5061" >REVERSAL MANAGEMENT</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">Transaction ID</label>
+              <div class="col-sm-6">
+                <input type ="text" class="form-control form-control-sm" id="transactionId" name="TRANSACTION_ID" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">Secret Key</label>
+              <div class="col-sm-6">
+                <input type ="text" class="form-control form-control-sm" id="secretKey" name="SECRET_KEY" value="tes01011010" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="AMOUNT" class="col-sm-3 col-form-label col-form-label-sm">Amount</label>
+              <div class="col-sm-6">
+                <input type ="text" class="form-control form-control-sm" id="amount" name="AMOUNT">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="AMOUNT" class="col-sm-3 col-form-label col-form-label-sm">Payment Date</label>
+              <div class="col-sm-6">
+                <input type ="text" class="form-control form-control-sm" id="paymentDate" name="PAYMENT_DATE">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="STATUS" class="col-sm-3 col-form-label col-form-label-sm">Status</label>
+              <div class="col-sm-6">
+                <select name="STATUS" id="status" class="form-control form-control-sm">
+                  <option value="S" selected>SUCCESS</option>
+                  <option value="F" >FAILED</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          
+          
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label for="WEBSITE_URL" class="col-sm-5 col-form-label col-form-label-sm">Website URL</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="websiteUrl" name="WEBSITE_URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="INSTAGRAM_URL" class="col-sm-5 col-form-label col-form-label-sm">Instagram URL</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="instagramUrl" name="INSTAGRAM_URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="FACEBOOK_URL" class="col-sm-5 col-form-label col-form-label-sm">Facebook URL</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="facebookUrl" name="FACEBOOK_URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="TOKOPEDIA_URL" class="col-sm-5 col-form-label col-form-label-sm">Tokopedia URL</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="tokopediaUrl" name="TOKOPEDIA_URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="TAMPERED_IMAGE_URL" class="col-sm-5 col-form-label col-form-label-sm">Tampered Image URL</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="tamperedImageUrl" name="TAMPERED_IMAGE_URL">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_IDENTITY_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">Customer ID Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerIdentityImageLink" name="CUSTOMER_IDENTITY_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_PHOTO_LINK" class="col-sm-5 col-form-label col-form-label-sm">Customer Photo Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerPhotoLink" name="CUSTOMER_PHOTO_LINK">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  
+
+</body>
+</html>
