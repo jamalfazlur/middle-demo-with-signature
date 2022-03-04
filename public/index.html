@@ -54,11 +54,11 @@
 </head>
 <body onload="randomString()">
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row m-2">
       <div class="col-md">
         <div class="alert alert-primary" role="alert">
-          <b>REQUEST SCREENING</b>
+          <b>RISK ENGINE MIDDLE TESTER</b>
         </div>
       </div>
     </div>
@@ -67,8 +67,8 @@
       <div class="row m-2">
         <div class="col-md-6">
           <div class="form-group row">
-            <label for="RE_ENV" class="col-sm-3 col-form-label col-form-label-sm">RE ENV.</label>
-            <div class="col-sm-6">
+            <label for="RE_ENV" class="col-sm-2 col-form-label col-form-label-sm">ENVIRONMENT</label>
+            <div class="col-sm-3">
               <select name="RE_ENV" id="reEnv" class="form-control form-control-sm">
                 <option value="http://localhost:7000/RiskMiddle/screening" >LOCAL</option>
                 <option value="http://api-sit.doku.com/RiskMiddle/screening" selected>SIT</option>
@@ -77,8 +77,8 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="TRANSACTION_ID" class="col-sm-3 col-form-label col-form-label-sm">SECRET KEY</label>
-            <div class="col-sm-6">
+            <label for="SECRET_KEY" class="col-sm-2 col-form-label col-form-label-sm">SECRET KEY</label>
+            <div class="col-sm-3">
               <input type ="text" class="form-control form-control-sm" id="secretKey" name="SECRET_KEY" value="tes01011010" required>
             </div>
           </div>
@@ -88,9 +88,9 @@
         <div class="col-md"><hr></div>
       </div>
       <div class="row m-2">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group row">
-              <label for="PARTNER_ID" class="col-sm-4 col-form-label col-form-label-sm">Partner ID</label>
+              <label for="PARTNER_ID" class="col-sm-5 col-form-label col-form-label-sm">Partner ID</label>
               <div class="col-sm-6">
                 <select name="PARTNER_ID" id="partnerId" class="form-control form-control-sm">
                   <option value="1" >MPG</option>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="ACTIVITY_ID" class="col-sm-4 col-form-label col-form-label-sm">Activity ID</label>
+              <label for="ACTIVITY_ID" class="col-sm-5 col-form-label col-form-label-sm">Activity ID</label>
               <div class="col-sm-6">
                 <select name="ACTIVITY_ID" id="activityId" class="form-control form-control-sm">
                   <optgroup label="PAYMENT">
@@ -190,7 +190,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="PAYMENT_CHANNEL_ID" class="col-sm-4 col-form-label col-form-label-sm">Payment Channel</label>
+              <label for="PAYMENT_CHANNEL_ID" class="col-sm-5 col-form-label col-form-label-sm">Payment Channel</label>
               <div class="col-sm-6">
                 <select name="PAYMENT_CHANNEL_ID" id="paymentChannel" class="form-control form-control-sm" data-toggle="tooltip" data-placement="right" title="Keep empty for activity management">
                   <option value="" selected>Choose...</option>
@@ -202,7 +202,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="MERCHANT_ID" class="col-sm-4 col-form-label col-form-label-sm">Merchant</label>
+              <label for="MERCHANT_ID" class="col-sm-5 col-form-label col-form-label-sm">Merchant</label>
               <div class="col-sm-6">
                 <select name="MERCHANT_ID" id="merchantId" class="form-control form-control-sm" data-toggle="tooltip" data-placement="right" title="Keep empty for activity management">
                   <option value="" selected>Choose...</option>
@@ -219,26 +219,26 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="TRANSACTION_ID" class="col-sm-4 col-form-label col-form-label-sm">Transaction ID</label>
+              <label for="TRANSACTION_ID" class="col-sm-5 col-form-label col-form-label-sm">Transaction ID</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="transactionId" name="TRANSACTION_ID" required>
               </div>
             </div>
             
             <div class="form-group row">
-              <label for="AMOUNT" class="col-sm-4 col-form-label col-form-label-sm">Amount</label>
+              <label for="AMOUNT" class="col-sm-5 col-form-label col-form-label-sm">Amount</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="amount" name="AMOUNT">
               </div>
             </div>
             <div class="form-group row">
-              <label for="AMOUNT" class="col-sm-4 col-form-label col-form-label-sm">Payment Date</label>
+              <label for="AMOUNT" class="col-sm-5 col-form-label col-form-label-sm">Payment Date</label>
               <div class="col-sm-6">
                 <input type ="text" class="form-control form-control-sm" id="paymentDate" name="PAYMENT_DATE">
               </div>
             </div>
             <div class="form-group row">
-              <label for="STATUS" class="col-sm-4 col-form-label col-form-label-sm">Status</label>
+              <label for="STATUS" class="col-sm-5 col-form-label col-form-label-sm">Status</label>
               <div class="col-sm-6">
                 <select name="STATUS" id="status" class="form-control form-control-sm">
                   <option value="S" selected>SUCCESS</option>
@@ -248,7 +248,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="form-group row">
             <label for="WEBSITE_URL" class="col-sm-5 col-form-label col-form-label-sm">Website URL</label>
             <div class="col-sm-6">
@@ -292,6 +292,76 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="CUSTOMER_KTP_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">KTP Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerKtpImageLink" name="CUSTOMER_KTP_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_NPWP_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">NPWP Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerNpwpImageLink" name="CUSTOMER_NPWP_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_SIM_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">SIM Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerSimImageLink" name="CUSTOMER_SIM_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_SIUP_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">SIUP Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerSiupImageLink" name="CUSTOMER_SIUP_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_PASSPORT_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">PASSPORT Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerPassportImageLink" name="CUSTOMER_PASSPORT_IMAGE_LINK">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CUSTOMER_KITAS_IMAGE_LINK" class="col-sm-5 col-form-label col-form-label-sm">KITAS Image Link</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerKitasImageLink" name="CUSTOMER_KITAS_IMAGE_LINK">
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label for="IMAGE_BUCKET_NAME" class="col-sm-5 col-form-label col-form-label-sm">Image Bucket Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="imageBucketName" name="IMAGE_BUCKET_NAME">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label for="CUSTOMER_NAME" class="col-sm-5 col-form-label col-form-label-sm">Customer Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="customerName" name="CUSTOMER_NAME">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="BUSINESS_NAME" class="col-sm-5 col-form-label col-form-label-sm">Business Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="businessName" name="BUSINESS_NAME">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="BENEFICIARY_NAME" class="col-sm-5 col-form-label col-form-label-sm">Beneficiary Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="beneficiaryName" name="BENEFICIARY_NAME">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="BUSINESS_BANK_ACCOUNT_NAME" class="col-sm-5 col-form-label col-form-label-sm">Business Bank Account Name</label>
+            <div class="col-sm-6">
+              <input type ="text" class="form-control form-control-sm" id="businessBankAccountName" name="BUSINESS_BANK_ACCOUNT_NAME">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="FACEMATCH_STATUS" class="col-sm-5 col-form-label col-form-label-sm">Facematch Status</label>
             <div class="col-sm-6">
               <select name="FACEMATCH_STATUS" id="facematchStatus" class="form-control form-control-sm">
@@ -331,15 +401,9 @@
               </select>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="IMAGE_BUCKET_NAME" class="col-sm-5 col-form-label col-form-label-sm">Image Bucket Name</label>
-            <div class="col-sm-6">
-              <input type ="text" class="form-control form-control-sm" id="imageBucketName" name="IMAGE_BUCKET_NAME">
-            </div>
-          </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row mx-auto">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
